@@ -1,36 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎓 EduPortal LMS
 
-## Getting Started
+EduPortal LMS adalah sistem manajemen pembelajaran (Learning Management System) modern yang dibangun menggunakan Next.js dan MySQL. Aplikasi ini dirancang untuk memudahkan interaksi antara Admin, Guru, dan Siswa dalam proses belajar mengajar secara digital.
 
-First, run the development server:
+## 🌟 Fitur Utama
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **👦 Dashboard Siswa:**
+  - Menjelajahi berbagai mata pelajaran dan topik (seperti Matematika, dll).
+  - Membaca materi pembelajaran dengan antarmuka yang nyaman (Fixed Layout).
+  - Mengerjakan kuis interaktif (pilihan ganda) langsung dari sistem.
+  - Memantau rapor dan skor dari setiap kuis yang diselesaikan.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **👨‍🏫 Dashboard Guru:**
+  - Melihat daftar mata pelajaran, topik, materi, dan kuis.
+  - Memantau nilai dan skor kuis para siswa yang mengambil mata pelajaran mereka.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **👨‍💻 Dashboard Admin:**
+  - Manajemen penuh terhadap pengguna (Siswa, Guru, Admin).
+  - Mengelola Mata Pelajaran, Topik, Materi, dan Pertanyaan Kuis.
+  - Kontrol akses penuh terhadap sistem.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
 
-## Learn More
+- **Framework:** [Next.js](https://nextjs.org/) (App Router, Server Actions, & API Routes)
+- **Frontend:** React 19, Tailwind CSS (untuk styling responsif & modern)
+- **Database:** MySQL (Cloud by [Aiven](https://aiven.io/))
+- **Auth/Security:** JWT (JSON Web Tokens) di Edge Runtime Middleware, bcrypt
+- **Lainnya:** Axios, TypeScript
 
-To learn more about Next.js, take a look at the following resources:
+## 🚀 Panduan Instalasi (Lokal)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Jika Anda ingin menjalankan proyek ini secara lokal, ikuti langkah-langkah berikut:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone repository ini:**
+   ```bash
+   git clone https://github.com/username/lms_project.git
+   cd lms_project
+   ```
 
-## Deploy on Vercel
+2. **Install dependensi:**
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Atur Environment Variables (.env):**
+   Buat file bernama `.env` di direktori utama (root) proyek Anda dan sesuaikan dengan kredensial database MySQL Anda:
+   ```env
+   DB_HOST=mysql-xxxx.aivencloud.com
+   DB_PORT=23832
+   DB_USER=avnadmin
+   DB_PASSWORD=password_database_anda
+   DB_NAME=defaultdb
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+   JWT_SECRET=rahasia_jwt_anda
+   ```
+   *(Penting: Saat deploy ke layanan seperti Vercel, jangan lupa tambahkan variabel-variabel ini di dashboard pengaturan Environment Variables hosting Anda).*
+
+4. **Jalankan Aplikasi:**
+   ```bash
+   npm run dev
+   ```
+   Aplikasi akan berjalan di `http://localhost:3000`.
+
+
+## 📦 Deployment
+
+Proyek ini sangat siap dan optimal untuk di-deploy di [Vercel](https://vercel.com).
+Middleware pada Next.js dikonfigurasi untuk menggunakan Edge Runtime sehingga autentikasi berjalan dengan sangat ringan dan instan (menggunakan dekripsi Base64 tanpa library node.js berat). Pastikan Anda menggunakan `ssl: { rejectUnauthorized: false }` pada koneksi `mysql2` di `lib/db.ts` jika menggunakan database cloud seperti Aiven.
+
+---
+Dibuat dengan ❤️ untuk kemajuan edukasi digital.
