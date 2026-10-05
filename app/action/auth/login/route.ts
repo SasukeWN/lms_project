@@ -63,7 +63,7 @@ export async function POST(request: Request) {
             role: user.role
         }
 
-        const token = jwt.sign(payload, process.env.JWT_secret as string) as any;
+        const token = jwt.sign(payload, process.env.JWT_SECRET as string) as any;
 
         const cookieStore = await cookies()
         cookieStore.set('token', token, {
