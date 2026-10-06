@@ -25,14 +25,28 @@ export async function GET(request: Request) {
 
         let query = 'SELECT * FROM questions'
         let params: any[] = []
+        let quizInfo = null;
 
         if (quiz_id) {
             query += ' WHERE quiz_id = ?'
             params.push(quiz_id)
+
+            // Ambil informasi kuis (judul kuis, nama topik, nama subject)
+            const [infoResult]: any = await connection.execute(`
+                SELECT q.judul, t.nama_topik, s.nama as nama_subject
+                FROM quizzes q
+                JOIN topic t ON q.topic_id = t.id
+                JOIN subjects s ON t.subject_id = s.id
+                WHERE q.id = ?
+            `, [quiz_id]);
+
+            if (infoResult.length > 0) {
+                quizInfo = infoResult[0];
+            }
         }
 
         const [questions] = await connection.execute(query, params)
-        return Response.json({ success: true, data: questions }, { status: 200 })
+        return Response.json({ success: true, data: questions, quizInfo }, { status: 200 })
     } catch (error: any) {
         return Response.json({ success: false, message: "Gagal mengambil data soal" }, { status: 500 })
     }

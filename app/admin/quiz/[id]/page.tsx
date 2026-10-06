@@ -24,6 +24,7 @@ export default function QuestionsPage() {
     const quizId = params.id as string
 
     const [questions, setQuestions] = useState<Question[]>([])
+    const [quizInfo, setQuizInfo] = useState<{ judul: string, nama_topik: string, nama_subject: string } | null>(null)
     const [loading, setLoading] = useState(true)
     
     // Form state
@@ -43,6 +44,9 @@ export default function QuestionsPage() {
             setLoading(true)
             const res = await axios.get(`/action/admin/questions?quiz_id=${quizId}`)
             setQuestions(res.data.data)
+            if (res.data.quizInfo) {
+                setQuizInfo(res.data.quizInfo)
+            }
         } catch (error) {
             console.error("Gagal mengambil data soal", error)
         } finally {
@@ -138,7 +142,9 @@ export default function QuestionsPage() {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                         <div>
                             <h2 className="text-2xl font-bold text-slate-800">Daftar Soal</h2>
-                            <p className="text-sm text-slate-500">Kuis ID: {quizId}</p>
+                            <p className="text-sm text-slate-500">
+                                {quizInfo ? `${quizInfo.nama_subject} - ${quizInfo.nama_topik} - ${quizInfo.judul}` : `Kuis ID: ${quizId}`}
+                            </p>
                         </div>
                         <button 
                             onClick={isFormOpen ? () => setIsFormOpen(false) : handleOpenAdd}
