@@ -15,16 +15,9 @@ export interface SubjectRow extends RowDataPacket {
     deskripsi: string;
 }
 
-export interface TopicRow extends RowDataPacket {
-    id: number;
-    subject_id: number;
-    nama_topik: string;
-    created_at: string;
-}
-
 export interface MaterialRow extends RowDataPacket {
     id: number;
-    topic_id: number;
+    subject_id: number;
     judul: string;
     konten: string;
     created_at: string;
@@ -32,7 +25,7 @@ export interface MaterialRow extends RowDataPacket {
 
 export interface QuizRow extends RowDataPacket {
     id: number;
-    topic_id: number;
+    subject_id: number;
     judul: string;
     created_at: string;
 }
@@ -59,4 +52,9 @@ export interface ScoreRow extends RowDataPacket {
 
 export interface CountRow extends RowDataPacket {
     total: number;
+}
+
+export interface TopicRow extends RowDataPacket{
+    id:number;
+    
 }
