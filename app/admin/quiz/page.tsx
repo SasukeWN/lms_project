@@ -109,7 +109,7 @@ function QuizContent() {
     }
 
     return (
-        <main className="p-4 md:p-8 flex-1 overflow-y-auto">
+        <main className="p-4 md:p-8 flex-1 overflow-y-auto ">
             <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
                 <div>
                     <h2 className="text-2xl font-bold text-slate-800">Manajemen Kuis</h2>
@@ -233,9 +233,9 @@ function QuizContent() {
 
 export default function QuizPage() {
     return (
-        <div className="h-screen bg-slate-50 flex flex-col md:flex-row overflow-hidden">
+        <div className="h-[100dvh] bg-slate-50 flex flex-col md:flex-row overflow-hidden">
             <AdminNavbar />
-            <div className="flex-1 flex flex-col w-full">
+            <div className="flex-1 flex flex-col w-full overflow-hidden">
                 <header className="hidden md:flex h-16 bg-white border-b border-slate-200 items-center justify-between px-8">
                     <h1 className="text-xl font-bold text-slate-800">Manajemen Kuis</h1>
                     <div className="flex items-center gap-4">

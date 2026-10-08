@@ -125,10 +125,10 @@ export default function QuestionsPage() {
     }
 
     return (
-        <div className="h-screen bg-slate-50 flex flex-col md:flex-row overflow-hidden">
+        <div className="h-[100dvh] bg-slate-50 flex flex-col md:flex-row overflow-hidden">
             <AdminNavbar />
 
-            <div className="flex-1 flex flex-col w-full h-screen overflow-hidden">
+            <div className="flex-1 flex flex-col w-full overflow-hidden">
                 <header className="hidden md:flex shrink-0 h-16 bg-white border-b border-slate-200 items-center justify-between px-8">
                     <div className="flex items-center gap-4">
                         <Link href="/admin/quiz" className="text-slate-400 hover:text-slate-600 transition-colors">

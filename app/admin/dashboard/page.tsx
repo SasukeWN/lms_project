@@ -32,12 +32,12 @@ export default function AdminDashboard() {
     }, [router])
 
     return (
-        <div className="h-screen bg-slate-50 flex flex-col md:flex-row overflow-hidden">
+        <div className="h-[100dvh] bg-slate-50 flex flex-col md:flex-row overflow-hidden">
             {/* Sidebar dari Komponen Terpisah */}
             <AdminNavbar />
 
             {/* Main Content (Kanan) */}
-            <div className="flex-1 flex flex-col w-full">
+            <div className="flex-1 flex flex-col w-full overflow-hidden">
                 {/* Topbar Desktop */}
                 <header className="hidden md:flex h-16 bg-white border-b border-slate-200 items-center justify-between px-8">
                     <h1 className="text-xl font-bold text-slate-800">Dashboard Admin</h1>
